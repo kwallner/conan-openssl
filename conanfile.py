@@ -8,7 +8,7 @@ class OpenSSLConan(ConanFile):
     name = "OpenSSL"
     version = "1.0.2m"
     settings = "os", "compiler", "arch", "build_type"
-    url = "http://github.com/lasote/conan-openssl"
+    url = "http://github.com/kwallner/conan-openssl"
     license = "The current OpenSSL licence is an 'Apache style' license: https://www.openssl.org/source/license.html"
     description = "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured " \
                   "toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
@@ -62,7 +62,7 @@ class OpenSSLConan(ConanFile):
 
     def requirements(self):
         if not self.options.no_zlib:
-            self.requires("zlib/1.2.11@conan/stable")
+            self.requires("zlib/1.2.11@%s/%s" % ("kwallner", "testing"))
 
     @property
     def subfolder(self):
