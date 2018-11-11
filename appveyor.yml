@@ -5,7 +5,7 @@ environment:
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
 
-    CONAN_REFERENCE: "OpenSSL/1.0.2o"
+    CONAN_REFERENCE: "OpenSSL/1.1.1"
     CONAN_USERNAME: "conan"
     CONAN_LOGIN_USERNAME: "conanbot"
     CONAN_CHANNEL: "testing"
@@ -16,6 +16,46 @@ environment:
     CONAN_BUILD_POLICY: "outdated"
 
     matrix:
+        - MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 1
+
+        - MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 2
+
+        - MINGW_CONFIGURATIONS: "5@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 1
+
+        - MINGW_CONFIGURATIONS: "5@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 2
+
+        - MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 1
+
+        - MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 2
+
+        - MINGW_CONFIGURATIONS: "7@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 1
+
+        - MINGW_CONFIGURATIONS: "7@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 2
+
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
           CONAN_VISUAL_VERSIONS: 15
           CONAN_CURRENT_PAGE: 1
@@ -37,37 +77,7 @@ environment:
           CONAN_VISUAL_VERSIONS: 12
           CONAN_CURRENT_PAGE: 2
 
-        - MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 1
 
-        - MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 2
-
-        - MINGW_CONFIGURATIONS: "5@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 1
-
-        - MINGW_CONFIGURATIONS: "5@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 2
-
-        - MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 1
-
-        - MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 2
-
-        - MINGW_CONFIGURATIONS: "7@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 1
-
-        - MINGW_CONFIGURATIONS: "7@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          CONAN_CURRENT_PAGE: 2
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
