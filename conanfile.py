@@ -37,7 +37,6 @@ class OpenSSLConan(ConanFile):
 
     # When a new version is available they move the tar.gz to old/ location
     source_tgz = "https://www.openssl.org/source/openssl-%s.tar.gz" % version
-    source_tgz_old = "https://www.openssl.org/source/old/1.1.0/openssl-%s.tar.gz" % version
 
     def build_requirements(self):
         # useful for example for conditional build_requires
@@ -48,10 +47,7 @@ class OpenSSLConan(ConanFile):
 
     def source(self):
         self.output.info("Downloading %s" % self.source_tgz)
-        try:
-            tools.download(self.source_tgz_old, "openssl.tar.gz")
-        except:
-            tools.download(self.source_tgz, "openssl.tar.gz")
+        tools.download(self.source_tgz, "openssl.tar.gz")
         tools.unzip("openssl.tar.gz")
         tools.check_sha256("openssl.tar.gz",
                            "2836875a0f89c03d0fdf483941512613a50cfb421d6fd94b9f41d7279d586a3d")
@@ -62,7 +58,7 @@ class OpenSSLConan(ConanFile):
 
     def requirements(self):
         if not self.options.no_zlib:
-            self.requires("zlib/1.2.11@%s/%s" % ("kwallner", "testing"))
+            self.requires("zlib/1.2.11@%s/%s" % (self.user, self.channel))
             
     @property
     def subfolder(self):
